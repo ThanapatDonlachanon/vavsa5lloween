@@ -69,7 +69,6 @@
             singumVid.pause(); 
             singumVid.setAttribute('visible', 'false'); 
         });
-
         vidyaVid.addEventListener('markerLost', function () {
             vidyaVid.pause(); 
             vidyaVid.setAttribute('visible', 'false'); 
@@ -77,13 +76,13 @@
         function pl() {
             play = true;
             if (singumVid.getAttribute('visible')) {singumVid.play()}
-            if (vidyaVid.getAttribute('visible')) {vidyaVid.play()}
+            else if (vidyaVid.getAttribute('visible')) {vidyaVid.play()}
 
         }
         function pa() {
             play = false;
             if (singumVid.getAttribute('visible')) {singumVid.pause()}
-            if (vidyaVid.getAttribute('visible')) {vidyaVid.pause()}
+            else if (vidyaVid.getAttribute('visible')) {vidyaVid.pause()}
 
         }
     </script>
