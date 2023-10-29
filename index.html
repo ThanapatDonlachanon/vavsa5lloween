@@ -75,11 +75,25 @@
         });
         function pl() {
             play = true;
+            singumMarker.addEventListener('markerFound', function () {
+                singumVid.setAttribute('visible', 'true');
+                if (play) { singumVid.play(); }
+            });
+            vidyaMarker.addEventListener('markerFound', function () {
+                vidyaVid.setAttribute('visible', 'true');
+                if (play) { vidyaVid.play(); }
+            });
         }
         function pa() {
             play = false;
-            singumVid.pause()
-            vidyaVid.pause()
+            singumMarker.addEventListener('markerLost', function () {
+                singumVid.pause();
+                singumVid.setAttribute('visible', 'false');
+            });
+            vidyaMarker.addEventListener('markerLost', function () {
+                vidyaVid.pause();
+                vidyaVid.setAttribute('visible', 'false');
+            });
         }
     </script>
 
