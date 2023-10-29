@@ -69,16 +69,6 @@
             vidyaVis=true;
             if (play) { vidyaVid.play(); }
         });
-        singumMarker.addEventListener('markerLost', function () {
-            singumVid.pause();
-            singumVid.setAttribute('visible', 'false');
-            singumVis=false;
-        });
-        vidyaMarker.addEventListener('markerLost', function () {
-            vidyaVid.pause();
-            vidyaVid.setAttribute('visible', 'false');
-            vidyaVis=false;
-        });
         function pl() {
             play = true;
             if(singumVis){singumVis.play()}
@@ -89,6 +79,17 @@
             singumVis.pause();
             vidyaVis.pause();
         }
+        
+        singumMarker.addEventListener('markerLost', function () {
+            singumVid.pause();
+            singumVid.setAttribute('visible', 'false');
+            singumVis=false;
+        });
+        vidyaMarker.addEventListener('markerLost', function () {
+            vidyaVid.pause();
+            vidyaVid.setAttribute('visible', 'false');
+            vidyaVis=false;
+        });
     </script>
 
 </body>
