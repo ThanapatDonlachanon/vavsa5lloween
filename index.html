@@ -17,6 +17,15 @@
             <video id="vidyaVid" loop="true" crossorigin webkit-playsinline playsinline controls>
                 <source type="video/mp4" src="vidya.mp4">
             </video>
+            <video id="vidvaVid" loop="true" crossorigin webkit-playsinline playsinline controls>
+                <source type="video/mp4" src="vidva.mp4">
+            </video>
+            <video id="thapatVid" loop="true" crossorigin webkit-playsinline playsinline controls>
+                <source type="video/mp4" src="thapat.mp4">
+            </video>
+            <video id="aksornVid" loop="true" crossorigin webkit-playsinline playsinline controls>
+                <source type="video/mp4" src="aksorn.mp4">
+            </video>
         </a-assets>
 
         <a-marker id="singumMarker" type="pattern" url="singum.patt">
@@ -25,6 +34,18 @@
         </a-marker>
         <a-marker id="vidyaMarker" type="pattern" url="vidya.patt">
             <a-video id="a-video" src="#vidyaVid" width="2" height="1.125" rotation="270 0 0"
+                autoplay="false"></a-video>
+        </a-marker>
+        <a-marker id="vidvaMarker" type="pattern" url="vidva.patt">
+            <a-video id="a-video" src="#vidvaVid" width="2" height="1.125" rotation="270 0 0"
+                autoplay="false"></a-video>
+        </a-marker>
+        <a-marker id="thapatMarker" type="pattern" url="thapat.patt">
+            <a-video id="a-video" src="#thapatVid" width="2" height="1.125" rotation="270 0 0"
+                autoplay="false"></a-video>
+        </a-marker>
+        <a-marker id="aksornMarker" type="pattern" url="aksorn.patt">
+            <a-video id="a-video" src="#aksornVid" width="2" height="1.125" rotation="270 0 0"
                 autoplay="false"></a-video>
         </a-marker>
 
@@ -52,12 +73,21 @@
     <script>
         let play = false;
 
-        let singumVis,vidyaVis;
+        let singumVis,vidyaVis,vidvaVis,thapatVis,aksornVis;
         const singumMarker = document.getElementById('singumMarker');
         const singumVid = document.getElementById('singumVid');
 
         const vidyaMarker = document.getElementById('vidyaMarker');
         const vidyaVid = document.getElementById('vidyaVid');
+
+        const vidvaMarker = document.getElementById('vidvaMarker');
+        const vidvaVid = document.getElementById('vidvaVid');
+
+        const thapatMarker = document.getElementById('thapatMarker');
+        const thapatVid = document.getElementById('thaoatVid');
+
+        const aksornMarker = document.getElementById('aksornMarker');
+        const aksornVid = document.getElementById('aksornVid');
 
         singumMarker.addEventListener('markerFound', function () {
             singumVid.setAttribute('visible', 'true');
@@ -69,15 +99,32 @@
             vidyaVis=true;
             if (play) { vidyaVid.play(); }
         });
+        vidvaMarker.addEventListener('markerFound', function () {
+            vidvaVid.setAttribute('visible', 'true');
+            vidvaVis=true;
+            if (play) { vidvaVid.play(); }
+        });
+        thapatMarker.addEventListener('markerFound', function () {
+            thapatVid.setAttribute('visible', 'true');
+            thapatVis=true;
+            if (play) { thapatVid.play(); }
+        });
         function pl() {
             play = true;
             if(singumVis){singumVid.play()}
             else if(vidyaVis){vidyaVid.play()}
+            else if(vidvaVis){vidvaVid.play()}
+            else if(thapatVis){thapatVid.play()}
+            else if(aksornVis){aksornVid.play()}
+
         }
         function pa() {
             play = false;
-            singumVis.pause();
-            vidyaVis.pause();
+            singumVid.pause();
+            vidvaVid.pause();
+            vidyaVid.pause();
+            thapatVid.pause();
+            aksornVid.pause();
         }
         
         singumMarker.addEventListener('markerLost', function () {
@@ -89,6 +136,21 @@
             vidyaVid.pause();
             vidyaVid.setAttribute('visible', 'false');
             vidyaVis=false;
+        });
+        vidvaMarker.addEventListener('markerLost', function () {
+            vidvaVid.pause();
+            vidvaVid.setAttribute('visible', 'false');
+            vidvaVis=false;
+        });
+        thapatMarker.addEventListener('markerLost', function () {
+            thapatVid.pause();
+            thapatVid.setAttribute('visible', 'false');
+            thapatVis=false;
+        });
+        aksornMarker.addEventListener('markerLost', function () {
+            aksornVid.pause();
+            aksornVid.setAttribute('visible', 'false');
+            aksornVis=false;
         });
     </script>
 
