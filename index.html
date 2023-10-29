@@ -51,6 +51,8 @@
 
     <script>
         let play = false;
+
+        let singumVis,vidyaVis;
         const singumMarker = document.getElementById('singumMarker');
         const singumVid = document.getElementById('singumVid');
 
@@ -59,41 +61,33 @@
 
         singumMarker.addEventListener('markerFound', function () {
             singumVid.setAttribute('visible', 'true');
+            singumVis=true;
             if (play) { singumVid.play(); }
         });
         vidyaMarker.addEventListener('markerFound', function () {
             vidyaVid.setAttribute('visible', 'true');
+            vidyaVis=true;
             if (play) { vidyaVid.play(); }
         });
         singumMarker.addEventListener('markerLost', function () {
             singumVid.pause();
             singumVid.setAttribute('visible', 'false');
+            singumVis=false;
         });
         vidyaMarker.addEventListener('markerLost', function () {
             vidyaVid.pause();
             vidyaVid.setAttribute('visible', 'false');
+            vidyaVis=false;
         });
         function pl() {
             play = true;
-            singumMarker.addEventListener('markerFound', function () {
-                singumVid.setAttribute('visible', 'true');
-                if (play) { singumVid.play(); }
-            });
-            vidyaMarker.addEventListener('markerFound', function () {
-                vidyaVid.setAttribute('visible', 'true');
-                if (play) { vidyaVid.play(); }
-            });
+            if(singumVis){singumVis.play()}
+            if(vidyaVis){vidyaVis.play()}
         }
         function pa() {
             play = false;
-            singumMarker.addEventListener('markerLost', function () {
-                singumVid.pause();
-                singumVid.setAttribute('visible', 'false');
-            });
-            vidyaMarker.addEventListener('markerLost', function () {
-                vidyaVid.pause();
-                vidyaVid.setAttribute('visible', 'false');
-            });
+            singumVis.pause();
+            vidyaVis.pause();
         }
     </script>
 
