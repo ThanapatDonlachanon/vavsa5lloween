@@ -18,7 +18,7 @@
                 <source type="video/mp4" src="vidya.mp4">
             </video>
         </a-assets>
-        
+
         <a-marker id="singumMarker" type="pattern" url="singum.patt">
             <a-video id="a-video" src="#singumVid" width="2" height="1.125" rotation="270 0 0"
                 autoplay="false"></a-video>
@@ -27,7 +27,7 @@
             <a-video id="a-video" src="#vidyaVid" width="2" height="1.125" rotation="270 0 0"
                 autoplay="false"></a-video>
         </a-marker>
-        
+
         <a-entity camera></a-entity>
     </a-scene>
     <div class="footer">
@@ -53,37 +53,40 @@
         let play = false;
         const singumMarker = document.getElementById('singumMarker');
         const singumVid = document.getElementById('singumVid');
-        
+
         const vidyaMarker = document.getElementById('vidyaMarker');
         const vidyaVid = document.getElementById('vidyaVid');
-        
+
         singumMarker.addEventListener('markerFound', function () {
             singumVid.setAttribute('visible', 'true');
-            if (play) {singumVid.play();}
+            if (play) { singumVid.play(); }
         });
         vidyaMarker.addEventListener('markerFound', function () {
-            vidyaVid.setAttribute('visible', 'true'); 
-            if (play) {vidyaVid.play();}
+            vidyaVid.setAttribute('visible', 'true');
+            if (play) { vidyaVid.play(); }
         });
         singumMarker.addEventListener('markerLost', function () {
-            singumVid.pause(); 
-            singumVid.setAttribute('visible', 'false'); 
+            singumVid.pause();
+            singumVid.setAttribute('visible', 'false');
         });
         vidyaVid.addEventListener('markerLost', function () {
-            vidyaVid.pause(); 
-            vidyaVid.setAttribute('visible', 'false'); 
+            vidyaVid.pause();
+            vidyaVid.setAttribute('visible', 'false');
         });
         function pl() {
             play = true;
-            if (singumVid.getAttribute('visible')) {singumVid.play()}
-            else if (vidyaVid.getAttribute('visible')) {vidyaVid.play()}
+            singumMarker.addEventListener('markerFound', function () {
+                singumVid.play();
+            });
+            vidyaMarker.addEventListener('markerFound', function () {
+                vidyaVid.play();
+            });
 
         }
         function pa() {
             play = false;
-            if (singumVid.getAttribute('visible')) {singumVid.pause()}
-            else if (vidyaVid.getAttribute('visible')) {vidyaVid.pause()}
-
+            singumVid.pause()
+            vidyaVid.pause()
         }
     </script>
 
