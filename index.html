@@ -50,7 +50,7 @@
 
 
     <script>
-        let play = false;
+        let play = true;
 
         let singumVis,vidyaVis;
         const singumMarker = document.getElementById('singumMarker');
@@ -72,7 +72,7 @@
         function pl() {
             play = true;
             if(singumVis){singumVis.play()}
-            if(vidyaVis){vidyaVis.play()}
+            else if(vidyaVis){vidyaVis.play()}
         }
         function pa() {
             play = false;
